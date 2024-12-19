@@ -60,7 +60,7 @@ export default function Admin() {
 // import { Outlet, Link } from "react-router-dom";
 // import FooterAdmin from "../components/FooterAdmin";
 // import NavbarAdmin from "../components/NavAdmin";
-// import Breadcrumbs from "../components/BreadCrumbs";
+// import Breadcrumbs from "../components/Breadcrumbs";
 // import IconArtikel from "../assets/artikel.svg";
 // import IconPanduan from "../assets/panduan.svg";
 

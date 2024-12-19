@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import NavbarAdmin from '../components/NavAdmin';
 import FooterAdmin from '../components/FooterAdmin';
-import Breadcrumbs from '../components/BreadCrumbs';
+import Breadcrumbs from '../components/Breadcrumbs';
 
 function TambahArtikel() {
   const navigate = useNavigate();

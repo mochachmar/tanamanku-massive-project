@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import FooterAdmin from "../components/FooterAdmin";
-import Breadcrumbs from "../components/BreadCrumbs";
+import Breadcrumbs from "../components/Breadcrumbs";
 import NavbarAdmin from "../components/NavAdmin";
 import ContohGambar from "../assets/contoh-gambar.png";
 
