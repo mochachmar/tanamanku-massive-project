@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { NavLink, useNavigate } from 'react-router-dom';
 import AdminPhoto from '../assets/example-admin-photo.png';
 import Logo from '../assets/logo.png';
-import DashboardLogo from '../assets/dashboard.svg';
+import DashboardLogo from '../assets/Dashboard.svg';
 
 export default function NavbarAdmin({ children }) {
   const [isOpen, setIsOpen] = useState(false);
