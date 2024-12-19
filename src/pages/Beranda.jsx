@@ -19,14 +19,14 @@ function Beranda() {
       <Navbar />
       {/* Hero Section */}
       <section className="relative">
-        <img src={homeImage} alt="Tanaman Hias" className="w-full h-96 object-cover" />
+        <img src={homeImage} alt="Tanaman Hidroponik" className="w-full h-96 object-cover" />
         <div className="absolute inset-0 bg-black bg-opacity-30 flex items-center justify-end">
           <div className="text-left text-white p-6 md:px-16 lg:px-32">
             <h1 className="text-4xl md:text-5xl font-bold mb-4">Solusi Perawatan</h1>
-            <h2 className="text-4xl md:text-5xl font-semibold mb-4">Tanaman Hias</h2>
+            <h2 className="text-4xl md:text-5xl font-semibold mb-4">Tanaman Hidroponik</h2>
             <p className="max-w-lg text-sm md:text-base text-left">
-              TanamanKu hadir sebagai solusi cerdas dalam merawat tanaman hias Anda. Dengan teknologi Artificial Intelligence (AI), aplikasi ini dapat membantu mendeteksi kesehatan tanaman, memberikan rekomendasi perawatan yang tepat, dan
-              memastikan tanaman tumbuh optimal di lingkungan Anda.
+              TanamanKu hadir sebagai solusi cerdas dalam merawat tanaman hidroponik Anda. Dengan teknologi Artificial Intelligence (AI), aplikasi ini dapat membantu mendeteksi kesehatan tanaman, memberikan rekomendasi perawatan yang tepat,
+              dan memastikan tanaman tumbuh optimal di lingkungan Anda.
             </p>
           </div>
         </div>
@@ -46,12 +46,12 @@ function Beranda() {
             <div onClick={() => navigate('/articles')} className="cursor-pointer bg-[#6D7E5E] p-6 rounded-lg shadow-md">
               <img src={iconUnduh} alt="Articles" className="mx-auto mb-4 w-12 h-12" />
               <p className="text-sm text-white text-left">
-                Jelajahi berbagai artikel yang memberikan tips dan trik perawatan tanaman hias. Dari pemula hingga ahli, temukan inspirasi dan panduan yang tepat untuk menjaga tanaman Anda tetap sehat dan subur.
+                Jelajahi berbagai artikel yang memberikan tips dan trik perawatan tanaman hidroponik. Dari pemula hingga ahli, temukan inspirasi dan panduan yang tepat untuk menjaga tanaman Anda tetap sehat dan subur.
               </p>
             </div>
             <div onClick={() => navigate('/guide-download')} className="cursor-pointer bg-[#6D7E5E] p-6 rounded-lg shadow-md">
               <img src={iconGrow} alt="Guide Download" className="mx-auto mb-4 w-12 h-12" />
-              <p className="text-sm text-white text-left">Unduh panduan lengkap tips dan trik perawatan tanaman hias, mulai dari pemula hingga ahli. Dapatkan inspirasi dan cara tepat menjaga tanaman Anda tetap sehat dan subur!</p>
+              <p className="text-sm text-white text-left">Unduh panduan lengkap tips dan trik perawatan tanaman hidroponik, mulai dari pemula hingga ahli. Dapatkan inspirasi dan cara tepat menjaga tanaman Anda tetap sehat dan subur!</p>
             </div>
           </div>
         </div>
@@ -108,7 +108,7 @@ function Beranda() {
           <div className="md:ml-8">
             <h2 className="text-3xl font-bold mb-4">Mengapa Memilih TanamanKu?</h2>
             <p className="text-gray-900 text-left">
-              TanamanKu menggabungkan teknologi mutakhir dengan keindahan alam. AI kami didesain untuk memberikan panduan yang mudah dipahami oleh pemula, namun tetap akurat untuk para pecinta tanaman hias yang berpengalaman.
+              TanamanKu menggabungkan teknologi mutakhir dengan keindahan alam. AI kami didesain untuk memberikan panduan yang mudah dipahami oleh pemula, namun tetap akurat untuk para pecinta tanaman hidroponik yang berpengalaman.
             </p>
           </div>
         </div>
