@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import closeUpGreenLeavesNature from '../assets/close-up-green-leaves-nature.png';
 import removeRedEye from '../assets/remove-red-eye.svg';
 import closeIcon from '../assets/close-icon.svg';
+import Swal from 'sweetalert2';
 
 const NewPassword = () => {
   const navigate = useNavigate();
@@ -25,9 +26,25 @@ const NewPassword = () => {
     e.preventDefault();
 
     if (newPassword !== confirmPassword) {
-      setError('Kata sandi tidak cocok.');
+      Swal.fire({
+        toast: true,
+        position: 'top-end',
+        icon: 'warning',
+        title: 'Kata sandi tidak cocok.',
+        showConfirmButton: false,
+        timer: 2000,
+        timerProgressBar: true,
+      });
     } else if (!validatePasswordStrength(newPassword)) {
-      setError('Kata sandi harus minimal 8 karakter dan mengandung huruf besar, huruf kecil, angka, dan simbol.');
+      Swal.fire({
+        toast: true,
+        position: 'top-end',
+        icon: 'warning',
+        title: 'Kata sandi harus minimal 8 karakter dan mengandung huruf besar, huruf kecil, angka, dan simbol.',
+        showConfirmButton: false,
+        timer: 3000,
+        timerProgressBar: true,
+      });
     } else {
       setError('');
       setShowModal(true);
@@ -46,6 +63,15 @@ const NewPassword = () => {
 
       if (response.ok) {
         setShowModal(false);
+        Swal.fire({
+          toast: true,
+          position: 'top-end',
+          icon: 'success',
+          title: 'Kata sandi berhasil direset!',
+          showConfirmButton: false,
+          timer: 2000,
+          timerProgressBar: true,
+        });
         navigate('/sign-in');
       } else {
         console.log('Server error ignored for frontend usage.');
@@ -53,13 +79,30 @@ const NewPassword = () => {
         navigate('/sign-in');
       }
     } catch (err) {
-      console.log('Connection error ignored for frontend usage.');
+      Swal.fire({
+        toast: true,
+        position: 'top-end',
+        icon: 'error',
+        title: err.response?.data?.message || 'Terjadi kesalahan saat mereset kata sandi.',
+        showConfirmButton: false,
+        timer: 2000,
+        timerProgressBar: true,
+      });
       setShowModal(false);
       navigate('/sign-in');
     }
   };
 
   const handleConfirm = () => {
+    Swal.fire({
+      toast: true,
+      position: 'top-end',
+      icon: 'success',
+      title: 'Kata sandi berhasil direset!',
+      showConfirmButton: false,
+      timer: 2000,
+      timerProgressBar: true,
+    });
     submitNewPassword();
   };
 

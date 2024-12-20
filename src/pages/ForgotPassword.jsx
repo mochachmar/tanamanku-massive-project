@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import closeUpGreenLeavesNature from '../assets/close-up-green-leaves-nature.png';
+import Swal from 'sweetalert2';
 
 export const ForgotPassword = () => {
   const navigate = useNavigate();
@@ -16,16 +17,38 @@ export const ForgotPassword = () => {
     e.preventDefault();
 
     if (!email) {
-      setError('Email wajib diisi.');
-      return;
+      return Swal.fire({
+        toast: true,
+        position: 'top-end',
+        icon: 'warning',
+        title: 'Email wajib diisi.',
+        showConfirmButton: false,
+        timer: 2000,
+        timerProgressBar: true,
+      });
     } else if (!validateEmail(email)) {
-      setError('Format email tidak valid.');
-      return;
+      return Swal.fire({
+        toast: true,
+        position: 'top-end',
+        icon: 'warning',
+        title: 'Format email tidak valid.',
+        showConfirmButton: false,
+        timer: 2000,
+        timerProgressBar: true,
+      });
     } else {
       setError('');
     }
-
-    navigate('/forgot-password-code', { state: { email } });
+    Swal.fire({
+      toast: true,
+      position: 'top-end',
+      icon: 'success',
+      title: 'Tautan reset kata sandi telah dikirim.',
+      showConfirmButton: false,
+      timer: 2000,
+      timerProgressBar: true,
+    });
+    navigate('/new-password', { state: { email } });
   };
 
   return (

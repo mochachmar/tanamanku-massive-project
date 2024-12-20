@@ -1,6 +1,7 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import closeUpGreenLeavesNature from '../assets/close-up-green-leaves-nature.png';
+import Swal from 'sweetalert2';
 
 export const EmailCode = () => {
   const navigate = useNavigate();
@@ -39,6 +40,15 @@ export const EmailCode = () => {
 
   const handleVerification = () => {
     const verificationCode = code.join('');
+    Swal.fire({
+      toast: true,
+      position: 'top-end',
+      icon: 'success',
+      title: 'Email berhasil diverifikasi!',
+      showConfirmButton: false,
+      timer: 2000,
+      timerProgressBar: true,
+    });
     navigate('/sign-in');
   };
 
@@ -56,10 +66,26 @@ export const EmailCode = () => {
         setTimer(60);
         setResendEnabled(false);
       } else {
-        console.error('Gagal mengirim ulang kode');
+        Swal.fire({
+          toast: true,
+          position: 'top-end',
+          icon: 'success',
+          title: 'Kode verifikasi dikirim ulang!',
+          showConfirmButton: false,
+          timer: 2000,
+          timerProgressBar: true,
+        });
       }
     } catch (error) {
-      console.error('Terjadi kesalahan:', error);
+      Swal.fire({
+        toast: true,
+        position: 'top-end',
+        icon: 'error',
+        title: 'Gagal mengirim ulang kode.',
+        showConfirmButton: false,
+        timer: 2000,
+        timerProgressBar: true,
+      });
     }
   };
 

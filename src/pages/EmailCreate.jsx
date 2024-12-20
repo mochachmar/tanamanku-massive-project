@@ -2,9 +2,11 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import closeUpGreenLeavesNature from '../assets/close-up-green-leaves-nature.png';
 import removeRedEye from '../assets/remove-red-eye.svg';
+import Swal from 'sweetalert2';
 
 export const EmailCreate = () => {
   const navigate = useNavigate();
+  const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [showPassword, setShowPassword] = useState(false);
@@ -32,22 +34,59 @@ export const EmailCreate = () => {
 
     let isValid = true;
     if (!email) {
-      setError('Email wajib diisi.');
-      isValid = false;
+      return Swal.fire({
+        toast: true,
+        position: 'top-end',
+        icon: 'warning',
+        title: 'Nama dan email wajib diisi.',
+        showConfirmButton: false,
+        timer: 2000,
+        timerProgressBar: true,
+      });
     } else if (!validateEmail(email)) {
-      setError('Format email tidak valid.');
-      isValid = false;
+      return Swal.fire({
+        toast: true,
+        position: 'top-end',
+        icon: 'warning',
+        title: 'Format email tidak valid.',
+        showConfirmButton: false,
+        timer: 2000,
+        timerProgressBar: true,
+      });
     }
 
     if (!password) {
-      setPasswordError('Kata sandi wajib diisi.');
-      isValid = false;
+      return Swal.fire({
+        toast: true,
+        position: 'top-end',
+        icon: 'warning',
+        title: 'Kata sandi wajib diisi.',
+        showConfirmButton: false,
+        timer: 2000,
+        timerProgressBar: true,
+      });
     } else if (!validatePasswordStrength(password)) {
-      setPasswordError('Kata sandinya terlalu lemah. Silakan gunakan kombinasi huruf besar, huruf kecil, angka, dan simbol.');
-      isValid = false;
+      return Swal.fire({
+        toast: true,
+        position: 'top-end',
+        icon: 'warning',
+        title: 'Kata sandi terlalu lemah. Gunakan kombinasi huruf besar, huruf kecil, angka, dan simbol.',
+        showConfirmButton: false,
+        timer: 2000,
+        timerProgressBar: true,
+      });
     }
 
     if (!isValid) return;
+    Swal.fire({
+      toast: true,
+      position: 'top-end',
+      icon: 'success',
+      title: 'Akun berhasil dibuat!',
+      showConfirmButton: false,
+      timer: 2000,
+      timerProgressBar: true,
+    });
     navigate('/email-code');
   };
 
@@ -78,6 +117,8 @@ export const EmailCreate = () => {
 
           {/* Error Message */}
           {error && <p className="text-red-500">{error}</p>}
+
+          <input className="w-full max-w-md h-14 pl-4 pr-4 py-2 border border-solid border-black rounded-md text-base" placeholder="Nama" type="text" value={name} onChange={(e) => setName(e.target.value)} />
 
           {/* Email Input */}
           <input className="w-full max-w-md h-14 pl-4 pr-4 py-2 border border-solid border-black rounded-md text-base" placeholder="Email" type="email" value={email} onChange={(e) => setEmail(e.target.value)} />

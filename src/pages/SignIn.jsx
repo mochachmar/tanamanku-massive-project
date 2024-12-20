@@ -4,6 +4,7 @@ import closeUpGreenLeavesNature from '../assets/close-up-green-leaves-nature.png
 import removeRedEye from '../assets/remove-red-eye.svg';
 import google from '../assets/Google.svg';
 import logoFbSimple from '../assets/Logo-fb-simple.svg';
+import Swal from 'sweetalert2';
 
 export const SignIn = () => {
   const navigate = useNavigate();
@@ -50,6 +51,15 @@ export const SignIn = () => {
     }
 
     if (!isValid) return;
+    Swal.fire({
+      toast: true,
+      position: 'top-end',
+      icon: 'success',
+      title: 'Berhasil masuk! Anda akan dialihkan!',
+      showConfirmButton: false,
+      timer: 2000,
+      timerProgressBar: true,
+    });
     navigate('/splash-login');
   };
 
@@ -123,11 +133,37 @@ export const SignIn = () => {
           </button>
 
           {/* Google and Facebook Sign-In Buttons */}
-          <button className="flex items-center justify-center gap-2 w-full max-w-md bg-white hover:bg-[#f0f0f0] active:bg-[#e0e0e0] py-2.5 border border-[#565e6d] rounded-lg mt-4">
+          <button
+            className="flex items-center justify-center gap-2 w-full max-w-md bg-white hover:bg-[#f0f0f0] active:bg-[#e0e0e0] py-2.5 border border-[#565e6d] rounded-lg mt-4"
+            onClick={() => {
+              Swal.fire({
+                toast: true,
+                position: 'top-end',
+                icon: 'info',
+                title: 'Sign in dengan Google tidak tersedia di front end.',
+                showConfirmButton: false,
+                timer: 2000,
+                timerProgressBar: true,
+              });
+            }}
+          >
             <img className="w-5 h-5" alt="Google" src={google} />
             <span className="text-[#565e6d] font-normal text-base">Masuk dengan Google</span>
           </button>
-          <button className="flex items-center justify-center gap-2 w-full max-w-md bg-white hover:bg-[#f0f0f0] active:bg-[#e0e0e0] py-2.5 border border-[#565e6d] rounded-lg mt-2">
+          <button
+            className="flex items-center justify-center gap-2 w-full max-w-md bg-white hover:bg-[#f0f0f0] active:bg-[#e0e0e0] py-2.5 border border-[#565e6d] rounded-lg mt-2"
+            onClick={() => {
+              Swal.fire({
+                toast: true,
+                position: 'top-end',
+                icon: 'info',
+                title: 'Sign in dengan Facebook tidak tersedia di front end.',
+                showConfirmButton: false,
+                timer: 2000,
+                timerProgressBar: true,
+              });
+            }}
+          >
             <img className="w-5 h-5" alt="Logo fb simple" src={logoFbSimple} />
             <span className="text-[#565e6d] font-normal text-base">Masuk dengan Facebook</span>
           </button>
