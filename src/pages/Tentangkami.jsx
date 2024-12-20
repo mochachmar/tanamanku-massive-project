@@ -1,4 +1,9 @@
 import React from 'react';
+import homeImage from '../assets/home.jpg';
+import ttg from '../assets/ttgkami.jpg';
+import ttg1 from '../assets/ttgkami1.jpg';
+import ttg2 from '../assets/ttgkami2.jpg';
+import ttg3 from '../assets/ttgkami3.jpg';
 import { useNavigate } from 'react-router-dom';
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
@@ -15,7 +20,7 @@ const Tentangkami = () => {
         {/* Hero Section */}
         <section className="relative">
           <img
-            src="/assets/home.jpg" // Ensure this path is correct
+            src={homeImage} // Ensure this path is correct
             alt="Tanaman Hidroponik"
             className="w-full h-96 object-cover"
           />
@@ -36,7 +41,7 @@ const Tentangkami = () => {
             {/* First Row */}
             <div className="flex flex-col lg:flex-row items-center gap-8 lg:gap-16 p-6 rounded-lg shadow bg-gray-50">
               <div className="w-full lg:w-1/2">
-                <img src="/assets/ttgkami.jpg" alt="Tentang Kami 1" className="w-full h-72 object-cover rounded-lg transition-transform duration-300 hover:scale-105" />
+                <img src={ttg} alt="Tentang Kami 1" className="w-full h-72 object-cover rounded-lg transition-transform duration-300 hover:scale-105" />
               </div>
               <div className="lg:w-1/2 text-center lg:text-left">
                 <p className="text-lg text-gray-700">
@@ -53,14 +58,14 @@ const Tentangkami = () => {
                 </p>
               </div>
               <div className="w-full lg:w-1/2">
-                <img src="/assets/ttgkami1.jpg" alt="Tentang Kami 2" className="w-full h-72 object-cover rounded-lg transition-transform duration-300 hover:scale-105" />
+                <img src={ttg1} alt="Tentang Kami 2" className="w-full h-72 object-cover rounded-lg transition-transform duration-300 hover:scale-105" />
               </div>
             </div>
 
             {/* Third Row */}
             <div className="flex flex-col lg:flex-row items-center gap-8 lg:gap-16 p-6 rounded-lg shadow bg-gray-50">
               <div className="w-full lg:w-1/2">
-                <img src="/assets/ttgkami2.jpg" alt="Tentang Kami 3" className="w-full h-72 object-cover rounded-lg transition-transform duration-300 hover:scale-105" />
+                <img src={ttg2} alt="Tentang Kami 3" className="w-full h-72 object-cover rounded-lg transition-transform duration-300 hover:scale-105" />
               </div>
               <div className="lg:w-1/2 text-center lg:text-left">
                 <p className="text-lg text-gray-700">Menyediakan panduan perawatan yang disesuaikan dengan kebutuhan setiap jenis Tanaman Hidroponik, dari pemula hingga ahli, melalui artikel dan blog yang informatif.</p>
@@ -73,7 +78,7 @@ const Tentangkami = () => {
                 <p className="text-lg text-gray-700">Meningkatkan kesadaran akan pentingnya merawat Tanaman Hidroponik sebagai bagian dari gaya hidup hijau dan berkelanjutan.</p>
               </div>
               <div className="w-full lg:w-1/2">
-                <img src="/assets/ttgkami3.jpg" alt="Tentang Kami 4" className="w-full h-72 object-cover rounded-lg transition-transform duration-300 hover:scale-105" />
+                <img src={ttg3} alt="Tentang Kami 4" className="w-full h-72 object-cover rounded-lg transition-transform duration-300 hover:scale-105" />
               </div>
             </div>
           </div>
