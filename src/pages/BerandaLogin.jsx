@@ -5,9 +5,9 @@ import homeImage from '../assets/home.jpg';
 import iconDetek from '../assets/ikondetek.png';
 import iconUnduh from '../assets/ikonunduh.svg';
 import iconGrow from '../assets/ikongrow.svg';
-import imageMawar from '../assets/mawar.jpeg';
-import imageMelati from '../assets/melati.jpeg';
-import imageAnggrek from '../assets/anggrek.jpeg';
+import imageMawar from '../assets/selada.png';
+import imageMelati from '../assets/bayam.png';
+import imageAnggrek from '../assets/kale.png';
 import tentangKamiImage from '../assets/tentangkami.jpg';
 import NavbarLogin from '../components/Navbar-Login';
 
@@ -66,17 +66,17 @@ function BerandaLogin() {
             {[
               {
                 src: imageMawar,
-                title: 'Hama pada Bunga Mawar',
+                title: 'Hama pada Tanaman Selada',
                 date: 'Minggu, 25 Oktober 2024',
               },
               {
                 src: imageMelati,
-                title: 'Hama pada Bunga Melati',
+                title: 'Hama pada Tanaman Bayam',
                 date: 'Minggu, 25 Oktober 2024',
               },
               {
                 src: imageAnggrek,
-                title: 'Penyakit Jamur pada Daun',
+                title: 'Hama pada Tanaman Kale',
                 date: 'Minggu, 25 Oktober 2024',
               },
             ].map((article, index) => (

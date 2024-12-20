@@ -7,57 +7,77 @@ function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const [isMobileDropdownOpen, setIsMobileDropdownOpen] = useState(false);
-  const [isPerawatanDropdownOpen, setIsPerawatanDropdownOpen] = useState(false); // State untuk dropdown Perawatan
+  const [isPerawatanDropdownOpen, setIsPerawatanDropdownOpen] = useState(false);
+  const [isMobilePerawatanDropdownOpen, setIsMobilePerawatanDropdownOpen] = useState(false);
+
+  let dropdownTimeout; // Timeout untuk dropdown Blog/Artikel
+  let perawatanTimeout; // Timeout untuk dropdown Perawatan
 
   const toggleMenu = () => {
     setIsOpen(!isOpen);
-    setIsMobileDropdownOpen(false); // Close mobile dropdown when toggling menu
+    setIsMobileDropdownOpen(false);
+    setIsMobilePerawatanDropdownOpen(false);
   };
 
-  const toggleDropdown = (e) => {
-    e.preventDefault();
-    setIsDropdownOpen(!isDropdownOpen);
-  };
-
-  const toggleMobileDropdown = (e) => {
-    e.preventDefault();
+  const toggleMobileDropdown = () => {
     setIsMobileDropdownOpen(!isMobileDropdownOpen);
   };
 
-  const togglePerawatanDropdown = (e) => {
-    e.preventDefault();
-    setIsPerawatanDropdownOpen(!isPerawatanDropdownOpen); // Toggle dropdown Perawatan
+  const togglePerawatanDropdown = () => {
+    setIsMobilePerawatanDropdownOpen(!isMobilePerawatanDropdownOpen);
   };
 
-  const closeDropdown = (e) => {
-    e.stopPropagation();
-    setIsDropdownOpen(false);
+  const closeDropdown = () => {
     setIsMobileDropdownOpen(false);
-    setIsPerawatanDropdownOpen(false); // Tutup dropdown Perawatan
+    setIsMobilePerawatanDropdownOpen(false);
+  };
+
+  const handleMouseEnterDropdown = () => {
+    clearTimeout(dropdownTimeout);
+    setIsDropdownOpen(true);
+  };
+
+  const handleMouseLeaveDropdown = () => {
+    dropdownTimeout = setTimeout(() => {
+      setIsDropdownOpen(false);
+    }, 300); // Delay 300ms
+  };
+
+  const handleMouseEnterPerawatan = () => {
+    clearTimeout(perawatanTimeout);
+    setIsPerawatanDropdownOpen(true);
+  };
+
+  const handleMouseLeavePerawatan = () => {
+    perawatanTimeout = setTimeout(() => {
+      setIsPerawatanDropdownOpen(false);
+    }, 300); // Delay 300ms
   };
 
   return (
     <nav className="bg-[#E7F0DC] shadow-md">
       <div className="container mx-auto px-4 py-3 flex items-center justify-between">
-        {/* Logo */}
         <div className="flex items-center">
-          <img src={logo} alt="Logo" className="w-25 h-10" />
+          <Link to="/beranda">
+            <img src={logo} alt="Logo" className="w-25 h-10" />
+          </Link>
         </div>
 
-        {/* Navbar links */}
+        {/* Navbar links (Desktop) */}
         <div className="flex-grow flex items-center justify-center space-x-6">
           <div className="hidden lg:flex space-x-6">
             <Link to="/beranda" className="block px-4 py-2 text-gray-800 hover:bg-[#C5D9A4] rounded">
               Beranda
             </Link>
-            <div className="relative">
-              <button className="flex items-center px-4 py-2 text-gray-800 hover:bg-[#C5D9A4] rounded cursor-pointer focus:outline-none" onClick={toggleDropdown}>
+
+            <div className="relative" onMouseEnter={handleMouseEnterDropdown} onMouseLeave={handleMouseLeaveDropdown}>
+              <button className="flex items-center px-4 py-2 text-gray-800 hover:bg-[#C5D9A4] rounded cursor-pointer focus:outline-none">
                 Blog/Artikel
                 <ChevronDownOutline color={'#000000'} height="24px" width="24px" className="ml-2" />
               </button>
               {isDropdownOpen && (
                 <div className="absolute left-0 mt-2 w-60 bg-white shadow-lg rounded-md border z-10">
-                  <ul className="py-2" onClick={closeDropdown}>
+                  <ul className="py-2">
                     <li>
                       <Link to="/panduan" className="block px-4 py-2 text-gray-800 hover:bg-[#E7F0DC] rounded">
                         Tips Perawatan Tanaman
@@ -73,22 +93,21 @@ function Navbar() {
               )}
             </div>
 
-            {/* Dropdown Perawatan */}
-            <div className="relative">
-              <button className="flex items-center px-4 py-2 text-gray-800 hover:bg-[#C5D9A4] rounded cursor-pointer focus:outline-none" onClick={togglePerawatanDropdown}>
+            <div className="relative" onMouseEnter={handleMouseEnterPerawatan} onMouseLeave={handleMouseLeavePerawatan}>
+              <button className="flex items-center px-4 py-2 text-gray-800 hover:bg-[#C5D9A4] rounded cursor-pointer focus:outline-none">
                 Perawatan
                 <ChevronDownOutline color={'#000000'} height="24px" width="24px" className="ml-2" />
               </button>
               {isPerawatanDropdownOpen && (
                 <div className="absolute left-0 mt-2 w-60 bg-white shadow-lg rounded-md border z-10">
-                  <ul className="py-2" onClick={closeDropdown}>
+                  <ul className="py-2">
                     <li>
-                      <Link to="/sign-up" className="block px-4 py-2 text-gray-800 hover:bg-[#E7F0DC] rounded">
+                      <Link to="/sign-in" className="block px-4 py-2 text-gray-800 hover:bg-[#E7F0DC] rounded">
                         Deteksi Penyakit
                       </Link>
                     </li>
                     <li>
-                      <Link to="/sign-up" className="block px-4 py-2 text-gray-800 hover:bg-[#E7F0DC] rounded">
+                      <Link to="/sign-in" className="block px-4 py-2 text-gray-800 hover:bg-[#E7F0DC] rounded">
                         History Tanaman
                       </Link>
                     </li>
@@ -105,23 +124,15 @@ function Navbar() {
 
         {/* Navbar icons for desktop */}
         <div className="hidden lg:flex items-center space-x-10">
-          <Link to="/sign-up" className="text-gray-800">
+          <Link to="/sign-in" className="text-gray-800">
             <PersonOutline color="#000000" height="24px" width="24px" />
-          </Link>
-          <Link to="/settings" className="text-gray-800">
-            {/* Ini gw ilangin dulu gambar settingnnya */}
-            {/* <SettingsOutline color="#000000" height="24px" width="24px" /> */}
           </Link>
         </div>
 
-        {/* Mobile menu icon with settings and user icons */}
+        {/* Mobile menu icon */}
         <div className="lg:hidden flex items-center space-x-4">
-          <Link to="/sign-up" className="text-gray-800">
+          <Link to="/sign-in" className="text-gray-800">
             <PersonOutline color="#000000" height="24px" width="24px" />
-          </Link>
-          <Link to="/settings" className="text-gray-800">
-            {/* Ini gw ilangin dulu gambar settingnnya */}
-            {/* <SettingsOutline color="#000000" height="24px" width="24px" /> */}
           </Link>
           <button className="text-gray-800 focus:outline-none" onClick={toggleMenu}>
             <MenuOutline color={'#000000'} height="24px" width="24px" />
@@ -163,15 +174,15 @@ function Navbar() {
                 Perawatan
                 <ChevronDownOutline color={'#000000'} height="24px" width="24px" />
               </button>
-              {isPerawatanDropdownOpen && (
+              {isMobilePerawatanDropdownOpen && (
                 <ul className="mt-2 space-y-2 ml-4">
                   <li>
-                    <Link to="/sign-up" className="block px-4 py-2 text-gray-800 hover:bg-[#C5D9A4] rounded" onClick={closeDropdown}>
+                    <Link to="/sign-in" className="block px-4 py-2 text-gray-800 hover:bg-[#C5D9A4] rounded" onClick={closeDropdown}>
                       Deteksi Penyakit
                     </Link>
                   </li>
                   <li>
-                    <Link to="/sign-up" className="block px-4 py-2 text-gray-800 hover:bg-[#C5D9A4] rounded" onClick={closeDropdown}>
+                    <Link to="/sign-in" className="block px-4 py-2 text-gray-800 hover:bg-[#C5D9A4] rounded" onClick={closeDropdown}>
                       History Tanaman
                     </Link>
                   </li>
