@@ -80,7 +80,7 @@ function Beranda() {
                 date: 'Minggu, 25 Oktober 2024',
               },
             ].map((article, index) => (
-              <div key={index} onClick={() => navigate('/artikelsaatdibuka')} className="cursor-pointer rounded-lg shadow-md overflow-hidden bg-cover bg-center" style={{ backgroundImage: `url(${article.src})` }}>
+              <div key={index} onClick={() => navigate('/article/1')} className="cursor-pointer rounded-lg shadow-md overflow-hidden bg-cover bg-center" style={{ backgroundImage: `url(${article.src})` }}>
                 {/* Empty Space */}
                 <div className="h-48"></div>
 

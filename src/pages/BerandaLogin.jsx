@@ -80,7 +80,7 @@ function BerandaLogin() {
                 date: 'Minggu, 25 Oktober 2024',
               },
             ].map((article, index) => (
-              <div key={index} onClick={() => navigate('/artikelsaatdibuka')} className="cursor-pointer bg-white rounded-lg shadow-md overflow-hidden">
+              <div key={index} onClick={() => navigate('/article/1')} className="cursor-pointer bg-white rounded-lg shadow-md overflow-hidden">
                 <img src={article.src} alt={article.title} className="w-full h-48 object-cover" />
                 <div className="p-6">
                   <p className="text-sm text-gray-600">{article.date}</p>
